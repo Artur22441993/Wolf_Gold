@@ -1,6 +1,8 @@
 package com.wfol.gdol.we;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -29,9 +31,10 @@ public class kid extends WebViewClient {
     }
 
     @Override
-    public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
-        if (errorResponse.getStatusCode() == 404){
-          WG.ste(wg);
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        super.onPageStarted(view, url, favicon);
+        if(url.contains("404")){
+            WG.ste(wg);
         }
     }
 }
